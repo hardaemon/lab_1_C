@@ -1,37 +1,37 @@
 #include "dynamicArrayOfIntegers.h"
 #include "dynamicArrayError.h"
 
-//конструктор по умолчанию
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ
 DynamicArray::DynamicArray() : arr(new int[0]), size(0) {}
 
-//конструктор по размеру
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГ® Г°Г Г§Г¬ГҐГ°Гі
 DynamicArray::DynamicArray(size_t size) : arr(new int[size]), size(size) {
     for (size_t i = 0; i < size; ++i) { arr[i] = 0; }
 }
 
-//конструктор по размеру и числу n
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГ® Г°Г Г§Г¬ГҐГ°Гі ГЁ Г·ГЁГ±Г«Гі n
 DynamicArray::DynamicArray(size_t size, int n) : size(size) {
     arr = new int[size];
     for (size_t i = 0; i < size; ++i) { arr[i] = n; }
 }
-//конструктор копирования
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї
 DynamicArray::DynamicArray(const DynamicArray& copy) : size(copy.size) {
     arr = new int[size];
     for (size_t i = 0; i < size; ++i) { arr[i] = copy.arr[i]; }
 }
-//конструктор перемещения
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГї
 DynamicArray::DynamicArray(DynamicArray&& other) : arr(other.arr), size(other.size) {
     other.arr = nullptr;
     other.size = 0;
 }
-//деструктор
+//Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
 DynamicArray::~DynamicArray() { delete[] arr; }
-//длина массива
+//Г¤Г«ГЁГ­Г  Г¬Г Г±Г±ГЁГўГ 
 size_t DynamicArray::getSize() const { return size; }
-//доступ к элементу (оператор [])
+//Г¤Г®Г±ГІГіГЇ ГЄ ГЅГ«ГҐГ¬ГҐГ­ГІГі (Г®ГЇГҐГ°Г ГІГ®Г° [])
 int DynamicArray::operator[] (size_t index) const { return arr[index]; }
 int& DynamicArray::operator[] (size_t index) { return arr[index]; }
-//изменение размера
+//ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГҐ Г°Г Г§Г¬ГҐГ°Г 
 void DynamicArray::resize(size_t newSize) {
     if (newSize < size) {
         int* temp = arr;
@@ -51,7 +51,7 @@ void DynamicArray::resize(size_t newSize) {
         delete[] temp;
     }
 }
-//оператор присваивания
+//Г®ГЇГҐГ°Г ГІГ®Г° ГЇГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГї
 DynamicArray& DynamicArray::operator=(const DynamicArray& other) {
     if (this != &other) {
         delete[] arr;
@@ -61,7 +61,7 @@ DynamicArray& DynamicArray::operator=(const DynamicArray& other) {
     }
     return *this;
 }
-//оператор перемещения
+//Г®ГЇГҐГ°Г ГІГ®Г° ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГї
 DynamicArray& DynamicArray::operator=(DynamicArray&& other) {
     if (this != &other) {
         delete[] arr;
@@ -72,9 +72,9 @@ DynamicArray& DynamicArray::operator=(DynamicArray&& other) {
     }
     return *this;
 }
-//оператор ==
+//Г®ГЇГҐГ°Г ГІГ®Г° ==
 bool DynamicArray::operator==(const DynamicArray& arr) {
-    if (this->getSize() != arr.getSize()) { throw Error("Размеры массивов не совпадают"); }
+    if (this->getSize() != arr.getSize()) { throw Error("ГђГ Г§Г¬ГҐГ°Г» Г¬Г Г±Г±ГЁГўГ®Гў Г­ГҐ Г±Г®ГўГЇГ Г¤Г ГѕГІ"); }
     else {
         for (size_t i = 0; i < this->getSize(); ++i) {
             if (this->arr[i] != arr[i]) { return false; }
@@ -82,9 +82,9 @@ bool DynamicArray::operator==(const DynamicArray& arr) {
         return true;
     }
 }
-//оператор !=
+//Г®ГЇГҐГ°Г ГІГ®Г° !=
 bool DynamicArray::operator!=(const DynamicArray& arr) {
-    if (this->getSize() != arr.getSize()) { throw Error("Размеры массивов не совпадают"); }
+    if (this->getSize() != arr.getSize()) { throw Error("ГђГ Г§Г¬ГҐГ°Г» Г¬Г Г±Г±ГЁГўГ®Гў Г­ГҐ Г±Г®ГўГЇГ Г¤Г ГѕГІ"); }
     else {
         for (size_t i = 0; i < this->getSize(); ++i) {
             if (this->arr[i] == arr[i]) { return false; }
@@ -92,7 +92,7 @@ bool DynamicArray::operator!=(const DynamicArray& arr) {
         return true;
     }
 }
-//оператор <
+//Г®ГЇГҐГ°Г ГІГ®Г° <
 bool DynamicArray::operator<(const DynamicArray& arr) {
     for (size_t i = 0; i < std::min(this->getSize(), arr.getSize()); ++i)
     {
@@ -101,7 +101,7 @@ bool DynamicArray::operator<(const DynamicArray& arr) {
     }
     return (this->getSize() < arr.getSize());
 }
-//оператор <=
+//Г®ГЇГҐГ°Г ГІГ®Г° <=
 bool DynamicArray::operator<=(const DynamicArray& arr) {
     for (size_t i = 0; i < std::min(this->getSize(), arr.getSize()); ++i)
     {
@@ -109,7 +109,7 @@ bool DynamicArray::operator<=(const DynamicArray& arr) {
     }
     return true;
 }
-//оператор >
+//Г®ГЇГҐГ°Г ГІГ®Г° >
 bool DynamicArray::operator>(const DynamicArray& arr) {
     for (size_t i = 0; i < std::min(this->getSize(), arr.getSize()); ++i)
     {
@@ -118,7 +118,7 @@ bool DynamicArray::operator>(const DynamicArray& arr) {
     }
     return (this->getSize() > arr.getSize());
 }
-//оператор >=
+//Г®ГЇГҐГ°Г ГІГ®Г° >=
 bool DynamicArray::operator>=(const DynamicArray& arr) {
     for (size_t i = 0; i < std::min(this->getSize(), arr.getSize()); ++i)
     {
@@ -126,7 +126,7 @@ bool DynamicArray::operator>=(const DynamicArray& arr) {
     }
     return true;
 }
-//оператор +
+//Г®ГЇГҐГ°Г ГІГ®Г° +
 DynamicArray DynamicArray::operator+(const DynamicArray& arr) const
 {
     DynamicArray result(this->getSize() + arr.getSize());
@@ -136,19 +136,19 @@ DynamicArray DynamicArray::operator+(const DynamicArray& arr) const
     }
     return result;
 }
-//оператор ввода
+//Г®ГЇГҐГ°Г ГІГ®Г° ГўГўГ®Г¤Г 
 std::istream& operator>>(std::istream& i, DynamicArray& arr) {
-    std::cout << "Введите размер массива: ";
+    std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г°Г Г§Г¬ГҐГ° Г¬Г Г±Г±ГЁГўГ : ";
     size_t newSize;
     i >> newSize;
     arr.resize(newSize);
-    std::cout << "Введите " + std::to_string(newSize) + " элементов массива: ";
+    std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ " << newSize << " ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ : ";
     for (size_t j = 0; j < arr.getSize(); ++j) {
         i >> arr[j];
     }
     return i;
 }
-//оператор вывода
+//Г®ГЇГҐГ°Г ГІГ®Г° ГўГ»ГўГ®Г¤Г 
 std::ostream& operator<<(std::ostream& o, const DynamicArray& arr)
 {
     o << "[ ";
